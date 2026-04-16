@@ -1,24 +1,26 @@
 'use client'
 
-import { useState } from 'react'
-import { X } from 'lucide-react'
-
 export default function AnnouncementBar() {
-  const [isVisible, setIsVisible] = useState(true)
-
-  if (!isVisible) return null
+  const messages = [
+    'Free Shipping on Orders Over R750',
+    'Smart Home Lighting — Trusted by 40,000+ Customers',
+    '30-Day Money-Back Guarantee',
+    'Limited Stock — Order Before It Sells Out',
+    'Free Shipping on Orders Over R750',
+    'Smart Home Lighting — Trusted by 40,000+ Customers',
+    '30-Day Money-Back Guarantee',
+    'Limited Stock — Order Before It Sells Out',
+  ]
 
   return (
-    <div className="relative bg-foreground text-primary-foreground">
-      <div className="container-custom flex items-center justify-center py-2.5 text-sm tracking-wide">
-        <p>Free shipping on orders over $75 — Shop the new collection</p>
-        <button
-          onClick={() => setIsVisible(false)}
-          className="absolute right-4 p-1 hover:opacity-70 transition-opacity"
-          aria-label="Dismiss announcement"
-        >
-          <X className="h-3.5 w-3.5" />
-        </button>
+    <div className="bg-foreground text-background overflow-hidden">
+      <div className="flex animate-ticker whitespace-nowrap py-2.5">
+        {messages.map((msg, i) => (
+          <span key={i} className="inline-flex items-center gap-6 px-10 text-xs uppercase tracking-widest font-medium">
+            <span className="w-1 h-1 rounded-full bg-blue-400 flex-shrink-0" />
+            {msg}
+          </span>
+        ))}
       </div>
     </div>
   )
